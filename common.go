@@ -45,9 +45,9 @@ const (
 )
 
 const (
-	LowBucketTimestamp  BucketTimestamp = "low"
-	HighBucketTimestamp BucketTimestamp = "high"
-	MidBucketTimestamp  BucketTimestamp = "mid"
+	LowBucketTimestamp  BucketTimestamp = "-"
+	HighBucketTimestamp BucketTimestamp = "+"
+	MidBucketTimestamp  BucketTimestamp = "~"
 )
 
 const (
