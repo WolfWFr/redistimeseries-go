@@ -6,6 +6,13 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/RedisTimeSeries/redistimeseries-go)](https://goreportcard.com/report/github.com/RedisTimeSeries/redistimeseries-go)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/RedisTimeSeries/redistimeseries-go.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RedisTimeSeries/redistimeseries-go/alerts/)
 
+# Disclaimer
+> **This repository is not guaranteed to be actively maintained.**  
+It was forked due to a current need for features that were missing in the parent repository.  
+The changes made are a best-effort attempt only and I do not take responsibility for any missing or broken features.
+
+> If you decide to use this repository and find an issue, feel free to report it, but please be aware of the above.
+
 # redistimeseries-go
 [![Forum](https://img.shields.io/badge/Forum-RedisTimeSeries-blue)](https://forum.redislabs.com/c/modules/redistimeseries)
 [![Discord](https://img.shields.io/discord/697882427875393627?style=flat-square)](https://discord.gg/KExRgMb)
