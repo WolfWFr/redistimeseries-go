@@ -158,9 +158,9 @@ func (client *Client) DeleteSerie(key string) (err error) {
 // DeleteRange - Delete data points for a given timeseries and interval range in the form of start and end delete timestamps.
 // Returns the total deleted datapoints.
 // args:
-//  key - time series key name
-//  fromTimestamp - start of range. You can use TimeRangeMinimum to express the minimum possible timestamp.
-//  toTimestamp - end of range. You can use TimeRangeFull or TimeRangeMaximum to express the maximum possible timestamp.
+// key - time series key name
+// fromTimestamp - start of range. You can use TimeRangeMinimum to express the minimum possible timestamp.
+// toTimestamp - end of range. You can use TimeRangeFull or TimeRangeMaximum to express the maximum possible timestamp.
 func (client *Client) DeleteRange(key string, fromTimestamp int64, toTimestamp int64) (totalDeletedSamples int64, err error) {
 	conn := client.Pool.Get()
 	defer conn.Close()
@@ -311,9 +311,19 @@ func (client *Client) multiRangeWithOptions(cmd string, fromTimestamp int64, toT
 // key - time-series key name
 func (client *Client) Get(key string) (dataPoint *DataPoint,
 	err error) {
+	return client.GetWithOptions(key, DefaultGetOptions)
+}
+
+// GetWithOptions - Get the last sample of a time-series.
+// args:
+// key - time-series key name
+// getOptions - GetOptions options. You can use the default DefaultGetOptions
+func (client *Client) GetWithOptions(key string, getOptions GetOptions) (dataPoint *DataPoint,
+	err error) {
 	conn := client.Pool.Get()
 	defer conn.Close()
-	resp, err := conn.Do(GET_CMD, key)
+	args := createGetCmdArguments(key, getOptions)
+	resp, err := conn.Do(GET_CMD, args...)
 	if err != nil {
 		return nil, err
 	}

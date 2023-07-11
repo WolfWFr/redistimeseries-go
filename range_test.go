@@ -18,6 +18,7 @@ func TestCreateRangeCmdArguments(t *testing.T) {
 		want []interface{}
 	}{
 		{"default", args{"key", 0, 1, DefaultRangeOptions}, []interface{}{"key", "0", "1"}},
+		{"latest", args{"key", 0, 1, *NewRangeOptions().SetLatest(true)}, []interface{}{"key", "0", "1", "LATEST"}},
 		{"aggregation",
 			args{"key", 0, 1, *NewRangeOptions().SetAggregation(AvgAggregation, 60)},
 			[]interface{}{"key", "0", "1", "AGGREGATION", AvgAggregation, "60"}},
@@ -27,6 +28,12 @@ func TestCreateRangeCmdArguments(t *testing.T) {
 		{"aggregation and align",
 			args{"key", 0, 1, *NewRangeOptions().SetAggregation(AvgAggregation, 60).SetCount(120).SetAlign(4)},
 			[]interface{}{"key", "0", "1", "AGGREGATION", AvgAggregation, "60", "COUNT", "120", "ALIGN", "4"}},
+		{"aggregation and empty",
+			args{"key", 0, 1, *NewRangeOptions().SetAggregation(AvgAggregation, 60).SetCount(120).SetEmpty(true)},
+			[]interface{}{"key", "0", "1", "AGGREGATION", AvgAggregation, "60", "COUNT", "120", "EMPTY"}},
+		{"aggregation and bucket timestamp",
+			args{"key", 0, 1, *NewRangeOptions().SetAggregation(AvgAggregation, 60).SetCount(120).SetBucketTimestamp(MidBucketTimestamp)},
+			[]interface{}{"key", "0", "1", "AGGREGATION", AvgAggregation, "60", "COUNT", "120", "BUCKETTIMESTAMP", MidBucketTimestamp}},
 		{"aggregation and filter by ts",
 			args{"key", 0, 1, *NewRangeOptions().SetAggregation(AvgAggregation, 60).SetCount(120).SetFilterByTs([]int64{10, 5, 11})},
 			[]interface{}{"key", "0", "1", "FILTER_BY_TS", "10", "5", "11", "AGGREGATION", AvgAggregation, "60", "COUNT", "120"}},
@@ -37,7 +44,7 @@ func TestCreateRangeCmdArguments(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := createRangeCmdArguments(tt.args.key, tt.args.fromTimestamp, tt.args.toTimestamp, tt.args.rangeOptions); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("CreateMultiRangeCmdArguments() = %v, want %v", got, tt.want)
+				t.Errorf("CreateRangeCmdArguments() = %v, want %v", got, tt.want)
 			}
 		})
 	}

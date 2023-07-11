@@ -16,6 +16,7 @@ func Test_createMultiGetCmdArguments(t *testing.T) {
 		want []interface{}
 	}{
 		{"default", args{DefaultMultiGetOptions, []string{"labels!="}}, []interface{}{"FILTER", "labels!="}},
+		{"latest", args{*(NewMultiGetOptions().SetLatest(true)), []string{"labels!="}}, []interface{}{"LATEST", "FILTER", "labels!="}},
 		{"withlabels", args{*(NewMultiGetOptions().SetWithLabels(true)), []string{"labels!="}}, []interface{}{"WITHLABELS", "FILTER", "labels!="}},
 	}
 	for _, tt := range tests {

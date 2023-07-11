@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+//go:generate stringer -type=BucketTimestamp
+type BucketTimestamp string
+
 //go:generate stringer -type=AggregationType
 type AggregationType string
 
@@ -30,6 +33,7 @@ const (
 	SumAggregation   AggregationType = "SUM"
 	MinAggregation   AggregationType = "MIN"
 	MaxAggregation   AggregationType = "MAX"
+	RangeAggregation AggregationType = "RANGE"
 	CountAggregation AggregationType = "COUNT"
 	FirstAggregation AggregationType = "FIRST"
 	LastAggregation  AggregationType = "LAST"
@@ -37,6 +41,13 @@ const (
 	StdSAggregation  AggregationType = "STD.S"
 	VarPAggregation  AggregationType = "VAR.P"
 	VarSAggregation  AggregationType = "VAR.S"
+	TwaAggregation   AggregationType = "TWA"
+)
+
+const (
+	LowBucketTimestamp  BucketTimestamp = "low"
+	HighBucketTimestamp BucketTimestamp = "high"
+	MidBucketTimestamp  BucketTimestamp = "mid"
 )
 
 const (
@@ -74,7 +85,7 @@ const (
 	UncompressedChunkType ChunkType = "uncompressed"
 )
 
-var aggToString = []AggregationType{AvgAggregation, SumAggregation, MinAggregation, MaxAggregation, CountAggregation, FirstAggregation, LastAggregation, StdPAggregation, StdSAggregation, VarPAggregation, VarSAggregation}
+var aggToString = []AggregationType{AvgAggregation, SumAggregation, MinAggregation, MaxAggregation, RangeAggregation, CountAggregation, FirstAggregation, LastAggregation, StdPAggregation, StdSAggregation, VarPAggregation, VarSAggregation, TwaAggregation}
 
 // CreateOptions are a direct mapping to the options provided when creating a new time-series
 // Check https://oss.redislabs.com/redistimeseries/1.4/commands/#tscreate for a detailed description
