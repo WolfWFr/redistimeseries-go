@@ -2,7 +2,7 @@ package redis_timeseries_go_test
 
 import (
 	"fmt"
-	redistimeseries "github.com/RedisTimeSeries/redistimeseries-go"
+	redistimeseries "github.com/WolfWFr/redistimeseries-go"
 	"github.com/gomodule/redigo/redis"
 	"log"
 	"time"

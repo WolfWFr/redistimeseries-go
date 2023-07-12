@@ -1,10 +1,7 @@
 [![license](https://img.shields.io/github/license/RedisTimeSeries/RedisTimeSeries-go.svg)](https://github.com/RedisTimeSeries/RedisTimeSeries-go)
-[![CircleCI](https://circleci.com/gh/RedisTimeSeries/redistimeseries-go.svg?style=svg)](https://circleci.com/gh/RedisTimeSeries/redistimeseries-go)
-[![GitHub issues](https://img.shields.io/github/release/RedisTimeSeries/redistimeseries-go.svg)](https://github.com/RedisTimeSeries/redistimeseries-go/releases/latest)
-[![Codecov](https://codecov.io/gh/RedisTimeSeries/redistimeseries-go/branch/master/graph/badge.svg)](https://codecov.io/gh/RedisTimeSeries/redistimeseries-go)
-[![GoDoc](https://godoc.org/github.com/RedisTimeSeries/redistimeseries-go?status.svg)](https://godoc.org/github.com/RedisTimeSeries/redistimeseries-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/RedisTimeSeries/redistimeseries-go)](https://goreportcard.com/report/github.com/RedisTimeSeries/redistimeseries-go)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/RedisTimeSeries/redistimeseries-go.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/RedisTimeSeries/redistimeseries-go/alerts/)
+[![GitHub issues](https://img.shields.io/github/release/WolfWFr/redistimeseries-go.svg)](https://github.com/WolfWFr/redistimeseries-go/releases/latest)
+[![GoDoc](https://godoc.org/github.com/WolfWFr/redistimeseries-go?status.svg)](https://godoc.org/github.com/WolfWFr/redistimeseries-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/WolfWFr/redistimeseries-go)](https://goreportcard.com/report/github.com/WolfWFr/redistimeseries-go)
 
 # Disclaimer
 > **This repository is not guaranteed to be actively maintained.**  
@@ -24,7 +21,7 @@ Client and ConnPool based on the work of dvirsky and mnunberg on https://github.
 ## Installing
 
 ```sh
-$ go get github.com/RedisTimeSeries/redistimeseries-go
+$ go get github.com/WolfWFr/redistimeseries-go
 ```
 
 ## Running tests
@@ -44,7 +41,7 @@ package main
 
 import (
         "fmt"
-        redistimeseries "github.com/RedisTimeSeries/redistimeseries-go"
+        redistimeseries "github.com/WolfWFr/redistimeseries-go"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/RedisTimeSeries/redistimeseries-go
+module github.com/WolfWFr/redistimeseries-go
 
 go 1.12
 
